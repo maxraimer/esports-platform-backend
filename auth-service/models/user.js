@@ -5,11 +5,13 @@ export class User {
         this.email = email || '';
         this.password = password || '';
         this.profilePic = '';
+
         this.firstName = '';
         this.lastName = '';
         this.nickname = '';
         this.age = -1
         this.dateOfBirth = -1;
+
         this.gameTitles = [];
         this.rank = -1;
         this.achievements = [];
@@ -17,9 +19,12 @@ export class User {
         this.stats = {};
         this.matchHistory = [];
         this.tournamentHistory = [];
+
         this.socials = [];
+
         this.joinDate = -1;
         this.lastLogin = -1;
+        
         this.isPro = false;
         this.isOrg = false;
         this.isVerified = false;
