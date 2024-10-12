@@ -1,15 +1,16 @@
 import { findUserByUsernameOrEmail, createUser } from '../services/userService.js';
+import { registerValidationSchema, loginValidationSchema } from '../validators/authValidator.js';
 import { User } from '../models/user.js';
 import { comparePasswords } from '../utils/hash.js';
 import { generateToken } from '../utils/token.js';
 
 export const login = async (req, res) => {
-    const { username, email, password } = req.body;
-
-    // Перевірка наявності username/email та password
-    if ((!username && !email) || !password) {
-        return res.status(400).json({ message: 'Username or email and password are required.' });
+    const { error } = loginValidationSchema.validate(req.body);
+    if (error) {
+        return res.status(400).json({ message: error.details[0].message });
     }
+
+    const { username, email, password } = req.body;
 
     try {
         // Пошук користувача в БД
@@ -53,12 +54,12 @@ export const login = async (req, res) => {
 };
 
 export const register = async (req, res) => {
-    const { login, password, email, firstName, lastName, nickName } = req.body;
-
-    // Перевірка наявності всіх необхідних полів
-    if (!login || !password || !email || !firstName || !lastName || !nickName) {
-        return res.status(400).json({ message: 'All fields are required.' });
+    const { error } = registerValidationSchema.validate(req.body);
+    if (error) {
+        return res.status(400).json({ message: 'Data is invalid', error: error.details[0].message });
     }
+
+    const { login, password, email, firstName, lastName, nickName } = req.body;
 
     try {
         // Перевірка чи немає користувача з тим же login або email
