@@ -7,7 +7,7 @@ import { generateToken } from '../utils/token.js';
 export const login = async (req, res) => {
     const { error } = loginValidationSchema.validate(req.body);
     if (error) {
-        return res.status(400).json({ message: error.details[0].message });
+        return res.status(400).json({ message: 'Data is invalid', error: error.details[0].message });
     }
 
     const { username, email, password } = req.body;
