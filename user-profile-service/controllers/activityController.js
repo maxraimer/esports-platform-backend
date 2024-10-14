@@ -1,4 +1,5 @@
 import { logActivity, getUserActivities } from '../services/activityService.js';
+import { logActivitySchema } from '../validators/activityValidator.js';
 
 export const addActivity = async (req, res) => {
     const { error } = logActivitySchema.validate(req.body);
@@ -19,11 +20,6 @@ export const addActivity = async (req, res) => {
 
 export const getActivities = async (req, res) => {
     const { userId } = req.params;
-    
-    const { error } = userIdSchema.validate({ userId });
-    if (error) {
-        return res.status(400).json({ message: error.details[0].message });
-    }
 
     try {
         const activities = await getUserActivities(userId);
