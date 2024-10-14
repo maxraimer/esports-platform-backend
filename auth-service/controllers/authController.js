@@ -1,6 +1,6 @@
 import { findUserByUsernameOrEmail, createUser } from '../services/userService.js';
 import { registerValidationSchema, loginValidationSchema } from '../validators/authValidator.js';
-import { User } from '../models/user.js';
+import { User } from '../models/userModel.js';
 import { comparePasswords } from '../utils/hash.js';
 import { generateToken } from '../utils/token.js';
 

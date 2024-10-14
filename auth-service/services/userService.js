@@ -1,5 +1,5 @@
 import db from '../config/db.js';
-import { User } from '../models/user.js';
+import { User } from '../models/userModel.js';
 import { v4 as uuidv4 } from 'uuid';
 import { hashPassword } from '../utils/hash.js';
 

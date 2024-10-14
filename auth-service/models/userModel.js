@@ -19,6 +19,8 @@ export class User {
         this.stats = {};
         this.matchHistory = [];
         this.tournamentHistory = [];
+        this.friends = [];
+        this.activities = [];
 
         this.socials = [];
 
@@ -31,6 +33,7 @@ export class User {
     }
 
     init(data) {
+        if (data.email !== undefined) this.email = data.email;
         if (data.password !== undefined) this.password = data.password;
         if (data.profilePic !== undefined) this.profilePic = data.profilePic;
         if (data.firstName !== undefined) this.firstName = data.firstName;
@@ -45,6 +48,8 @@ export class User {
         if (data.stats !== undefined) this.stats = data.stats;
         if (data.matchHistory !== undefined) this.matchHistory = data.matchHistory;
         if (data.tournamentHistory !== undefined) this.tournamentHistory = data.tournamentHistory;
+        if (data.friends !== undefined) this.friends = data.friends;
+        if (data.activities !== undefined) this.activities = data.activities;
         if (data.socials !== undefined) this.socials = data.socials;
         if (data.joinDate !== undefined) this.joinDate = data.joinDate;
         if (data.lastLogin !== undefined) this.lastLogin = data.lastLogin;
