@@ -1,5 +1,5 @@
-import nano from "nano";
-import dotenv from "dotenv";
+import nano from 'nano';
+import dotenv from 'dotenv';
 
 dotenv.config();
 

@@ -32,9 +32,9 @@ export const createUser = async ({ login, password, email, firstName, lastName, 
     newUser.init({
         firstName: firstName,
         lastName: lastName,
-        joinDate: new Date().toISOString()
+        joinDate: Date.now()
     });
 
-    const response = await db.insert(newUser);
-    return response;
+    await db.insert(newUser);
+    return newUser;
 };
