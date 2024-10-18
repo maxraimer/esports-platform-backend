@@ -47,7 +47,7 @@ export const updateTeam = async (teamId, updatedData) => {
     try {
         const teamDoc = await db.get(teamId);
         const team = new Team(teamDoc);
-
+        team.init(teamDoc);
         team.init(updatedData);
 
         await db.insert({ ...team, _rev: teamDoc._rev });

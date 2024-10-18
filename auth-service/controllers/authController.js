@@ -72,10 +72,10 @@ export const register = async (req, res) => {
         // Створення нового користувача
         const response = await createUser({ login, password, email, firstName, lastName, nickName });
 
-        console.log('User registered:', response.id);
+        console.log('User registered:', response._id);
         return res.status(201).json({ message: 'User registered successfully', userId: response.id });
     } catch (error) {
         console.error('Error during registration:', error);
-        return res.status(500).json({ message: 'Internal server error' });
+        return res.status(500).json({ message: 'Internal server error', error: error.message });
     }
 };

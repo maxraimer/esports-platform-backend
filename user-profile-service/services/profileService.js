@@ -12,17 +12,13 @@ export const getUserProfile = async (userId) => {
 
 export const updateUserProfile = async (userId, updatedData) => {
     try {
-        console.log(updatedData);
         const userDoc = await db.get(userId);
         const user = new User({id: userId, username: userDoc.username});
-        console.log(user);
         user.init(userDoc);
-        console.log(user);
         user.init(updatedData);
-        console.log(user);
-        await db.insert({...user, _rev: userDoc._rev});
+        await db.insert({...user, password: userDoc.password, _rev: userDoc._rev});
         return user;
     } catch (error) {
-        throw new Error('Error updating profile');
+        throw new Error('User probably not found');
     }
 }

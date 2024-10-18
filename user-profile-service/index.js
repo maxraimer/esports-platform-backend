@@ -24,6 +24,10 @@ app.get('/', (req, res) => {
     res.send('User Profile Service is running');
 });
 
+app.use((req, res) => {
+    res.status(404).json({ message: 'Route not found' });
+});
+
 app.listen(port, () => {
     console.log(`User Profile Service is running on http://localhost:${port}`);
 });

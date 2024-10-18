@@ -4,6 +4,7 @@ export class User {
         this.username = username || '';
         this.email = email || '';
         this.profilePic = '';
+        this.password = '';
 
         this.firstName = '';
         this.lastName = '';
@@ -34,6 +35,7 @@ export class User {
     init(data) {
         if (data.email !== undefined) this.email = data.email;
         if (data.profilePic !== undefined) this.profilePic = data.profilePic;
+        if (data.password) this.password = data.password;
         if (data.firstName !== undefined) this.firstName = data.firstName;
         if (data.lastName !== undefined) this.lastName = data.lastName;
         if (data.nickname !== undefined) this.nickname = data.nickname;
