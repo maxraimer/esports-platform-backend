@@ -18,7 +18,7 @@ export const login = async (req, res) => {
 
         // Якщо нема в БД - повертаємо помилку
         if (users.length === 0) {
-            return res.status(401).json({ message: 'Invalid credentials' });
+            return res.status(401).json({ message: 'Wrong login' });
         }
 
         // Якщо документів більше 1 в БД - повертаємо помилку

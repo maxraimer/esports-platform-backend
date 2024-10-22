@@ -2,7 +2,7 @@ import Joi from 'joi';
 
 export const registerValidationSchema = Joi.object({
     login: Joi.string().min(6).max(16).required(),
-    password: Joi.string().min(6).required(),
+    password: Joi.string().min(8).required(),
     email: Joi.string().email().required(),
     firstName: Joi.string().min(2).max(30).required(),
     lastName: Joi.string().min(2).max(30).required(),
