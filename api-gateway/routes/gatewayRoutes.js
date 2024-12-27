@@ -23,6 +23,17 @@ router.post('/auth/register', async (req, res) => {
     }
 });
 
+router.get('/profile', async (req, res) => {
+    try {
+        const { id } = req.query;
+        if (!id) return res.status(400).json({ message: 'User ID is required' });
+        const response = await axios.get(`${services.userProfileService}/get`, {params: { id }});
+        res.status(response.status).json(response.data);
+    } catch (error) {
+        res.status(error.response?.status || 500).json({ message: 'User fetch failed', error: error.response?.data.message });
+    }
+});
+
 
 
 

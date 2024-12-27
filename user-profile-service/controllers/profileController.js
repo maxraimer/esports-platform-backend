@@ -17,6 +17,7 @@ export const getProfile = async (req, res) => {
 
     try {
         const user = await getUserProfile(userId);
+        delete user.password;
         res.status(200).json(user);
     } catch (error) {
         res.status(404).json({ message: 'User not found', error: error.message });
